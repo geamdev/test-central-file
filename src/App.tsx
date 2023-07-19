@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+import supabase from './supabase/client';
+import { Login, Register, NotFound, Dashboard, Profile } from './pages';
+import { NavBar } from './components';
+
+const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        if (location.pathname === '/register') return;
+        navigate('/login');
+      }
+    });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='*' element={<NotFound />} />
+        <Route
+          path='/'
+          element={
+            <>
+              <NavBar />
+              <Outlet />
+            </>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/contacts' element={<div>Contacts</div>} />
+        </Route>
+      </Routes>
+    </div>
+  );
+};
 
-export default App
+export default App;
