@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 interface ICardContainerProps {
   width?: string;
@@ -14,7 +14,7 @@ export const CardContainer = styled.div<Partial<ICardContainerProps>>`
   padding: 1.5rem;
   border-radius: 0.3rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px;
-  border-top: ${({ line }) => line ? '2px solid #4c6c9d' : 'none'};
+  border-top: ${({ line }) => (line ? '2px solid #4c6c9d' : 'none')};
   @media (max-width: 768px) {
     width: 100%;
   }

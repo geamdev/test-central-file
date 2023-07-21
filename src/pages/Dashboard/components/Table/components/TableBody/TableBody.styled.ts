@@ -6,10 +6,6 @@ interface ITDProps {
   isGray?: boolean;
 }
 
-interface IStatusProps {
-  status?: string;
-}
-
 interface IRolesProps {
   rol?: string;
 }
@@ -39,15 +35,15 @@ export const TableDataStyled = styled.td<Partial<ITDProps>>`
     font-size: 14px;
   }
   &:nth-of-type(2) {
-    width: 500px;
+    width: 600px;
   }
   &:nth-of-type(3) {
-    width: 50px;
+    width: 800px;
   }
   &:nth-of-type(4) {
-    width: 350px;
+    width: 100px;
   }
-  &:last-child {
+  &:nth-of-type(5) {
     width: 100px;
   }
 `;
@@ -89,24 +85,6 @@ export const Names = styled.p`
   }
 `;
 
-export const Status = styled.p<Partial<IStatusProps>>`
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  margin-left: -15px;
-  color: ${(props) => (props.status === 'Active' ? '#12B76A' : '#000')};
-  background-color: ${(props) =>
-    props.status === 'Active' ? '#EBFDF3' : '#EDEFF4'};
-  padding: 5px 10px;
-  border-radius: 10px;
-  & > svg {
-    font-size: 15px;
-    margin-right: 5px;
-  }
-`;
-
 export const ContainerRoles = styled.div`
   display: flex;
   gap: 15px;
@@ -116,8 +94,22 @@ export const Roles = styled.p<Partial<IRolesProps>>`
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.6px;
-  color: ${(props) => (props.rol === 'Admin' ? '#000' : (props.rol === 'User' ? '#000' : (props.rol === 'Collaborator' ? '#000' : '#fff')))};
-  background-color: ${(props) => (props.rol === 'Admin' ? '#ffff81' : (props.rol === 'User' ? '#c7f7f7' : (props.rol === 'Collaborator' ? '#c0a0ce' : '#000')))};
+  color: ${(props) =>
+    props.rol === 'Admin'
+      ? '#000'
+      : props.rol === 'User'
+      ? '#000'
+      : props.rol === 'Collaborator'
+      ? '#000'
+      : '#fff'};
+  background-color: ${(props) =>
+    props.rol === 'Admin'
+      ? '#ffff81'
+      : props.rol === 'User'
+      ? '#c7f7f7'
+      : props.rol === 'Collaborator'
+      ? '#c0a0ce'
+      : '#000'};
   padding: 5px 10px;
   border-radius: 10px;
 `;

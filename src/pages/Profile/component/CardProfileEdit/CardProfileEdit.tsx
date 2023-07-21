@@ -1,16 +1,21 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../../../redux/reducers/userSlice/userSlice';
 import { Card } from '../../../../components';
-import { Form, Fieldset, Legend, Button } from './CardProfileEdit.styles';
-import supabase from '../../../../supabase/client';
-import { useUserProfile } from '../../../../hooks';
+import {
+  Form,
+  Fieldset,
+  Legend,
+  Button,
+  Label,
+  Textarea,
+} from './CardProfileEdit.styles';
 
 interface User {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
+  bio: string;
 }
 
 interface CardProfileEditProps {
@@ -20,9 +25,12 @@ interface CardProfileEditProps {
 const CardProfileEdit: React.FC<CardProfileEditProps> = ({ setLoading }) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: { user: User }) => state.user);
-  useUserProfile();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     dispatch(setUser({ ...userData, [name]: value }));
   };
@@ -38,6 +46,7 @@ const CardProfileEdit: React.FC<CardProfileEditProps> = ({ setLoading }) => {
         data: {
           names: `${userData.firstName} ${userData.lastName}`,
           phone: userData.phone,
+          bio: userData.bio,
         },
       });
 
@@ -95,11 +104,24 @@ const CardProfileEdit: React.FC<CardProfileEditProps> = ({ setLoading }) => {
               required
               placeholder=''
               type='tel'
+              value={userData.phone}
               onChange={handleChange}
               name='phone'
             />
             <span>Phone</span>
           </label>
+
+          <Label>
+            <Textarea
+              required
+              rows={3}
+              placeholder=''
+              value={userData.bio}
+              onChange={handleChange}
+              name='bio'
+            />
+            <span>Bio</span>
+          </Label>
 
           <Button type='submit'>
             <span />

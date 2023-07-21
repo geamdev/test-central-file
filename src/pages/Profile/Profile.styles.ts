@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px 20px;
+  margin: 35px 20px;
 `;
 
 export const ContentCard = styled.div`

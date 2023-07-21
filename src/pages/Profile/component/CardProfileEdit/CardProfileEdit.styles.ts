@@ -50,6 +50,48 @@ export const Legend = styled.legend`
   margin-bottom: 1rem;
 `;
 
+export const Label = styled.label`
+  position: relative;
+  & > textarea {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 5px;
+    font-size: 13px;
+    color: #2c2c2c;
+    & ~ span {
+      position: absolute;
+      left: 10px;
+      top: 75px;
+      color: grey;
+      font-size: 0.9em;
+      cursor: text;
+      transition: 0.3s ease;
+    }
+    &:focus ~ span,
+    &:valid ~ span {
+      top: 83px;
+      font-size: 0.6em;
+      font-weight: 600;
+    }
+  }
+`;
+
+export const Textarea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  background-color: #f8f8f8;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  position: relative;
+`;
+
 export const Button = styled.button`
   background-color: transparent;
   border: 1.5px solid #cacaca;
@@ -84,7 +126,7 @@ export const Button = styled.button`
       left: 5px;
     }
     @media (min-width: 481px) and (max-width: 768px) {
-      left: 23%
+      left: 23%;
     }
   }
 

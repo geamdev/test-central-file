@@ -1,12 +1,8 @@
 interface TableBody {
   items: {
-    id: number;
+    id: string;
     name: string;
-    lastName: string;
-    username: string;
-    image: string;
     email: string;
-    rol: string[];
-    status: string;
+    profileName: string;
   }[];
 }

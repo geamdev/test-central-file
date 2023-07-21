@@ -13,10 +13,6 @@ export const ContentImage = styled.div`
   gap: 0.5rem;
 `;
 
-export const ContentIntro = styled.div`
-  margin: 1.3rem 0;
-`;
-
 export const ContentEdit = styled.div`
   display: flex;
   margin: 1.3em 0;

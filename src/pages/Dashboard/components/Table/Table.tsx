@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { TableBody, TableHeader, Pagination } from './components';
-import supabase from '../../../../supabase/client';
+import { useUser } from './hook';
 
 import {
   Container,
@@ -10,9 +10,10 @@ import {
   ContainerTable,
 } from './Table.styles';
 
-const data: any = [];
-
 const Table: React.FC = () => {
+
+  const { users: data } = useUser();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 8;
@@ -22,9 +23,7 @@ const Table: React.FC = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { data: users } = await supabase.auth.getUser();
 
-      console.log(users);
     };
     fetchUser();
   }, []);

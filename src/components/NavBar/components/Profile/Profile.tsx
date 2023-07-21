@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Card } from './components';
-import { AiOutlineCaretDown } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { HeaderProfile, ProfileSection, Avatar } from './Profile.styles';
 
@@ -31,11 +30,10 @@ const Profile: React.FC = () => {
   return (
     <HeaderProfile>
       <ProfileSection onClick={showModal} ref={modalRef}>
+        <span>{userData.firstName} {userData.lastName}</span>
         <Avatar>
           <CgProfile />
         </Avatar>
-        <span>{userData.firstName} {userData.lastName}</span>
-        <AiOutlineCaretDown />
         {show && <Card />}
       </ProfileSection>
     </HeaderProfile>

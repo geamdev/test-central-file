@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components';
 
-import supabase from '../../supabase/client';
+import { useLoginUser } from './hook';
 import {
   ButtonStyled,
   ContainerInput,
@@ -18,21 +18,26 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { loginUser, isLoggedIn } = useLoginUser();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      alert(error.message);
+    if (!email || !password) {
+      alert('Please fill all the fields');
       return;
     }
-
-    console.log(data);
-    navigate('/');
+    try {
+      await loginUser(email, password);
+      if (isLoggedIn) {
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/');
+      } else {
+        alert('Credenciales incorrectas. Inténtalo de nuevo.');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -40,18 +45,6 @@ const Login: React.FC = () => {
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-
-  useEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (user) {
-        navigate('/');
-      }
-    };
-    getUser();
-  }, [navigate]);
 
   return (
     <>

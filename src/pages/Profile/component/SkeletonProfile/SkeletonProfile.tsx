@@ -6,17 +6,12 @@ import {
   ContentImage,
   SocialMedia,
   ContentEdit,
-  ContentIntro,
 } from './SkeletonProfile.styles';
 import { Card } from '../../../../components';
 
 const SkeletonProfile: React.FC = () => {
   return (
     <Container>
-      <ContentIntro>
-        <Skeleton variant='text' width='25%' height='16px' />
-        <Skeleton variant='text' width='75%' height='16px' />
-      </ContentIntro>
       <ContentCard>
         <Card width='100%'>
           <ContentImage>

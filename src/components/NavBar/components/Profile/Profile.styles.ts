@@ -22,23 +22,13 @@ export const ProfileSection = styled.div`
       display: none;
     }
   }
-  & > svg {
-    color: #e9ecef;
-    cursor: pointer;
-    margin-left: 5px;
-    &:hover {
-      color: #108fd8;
-    }
-    @media (max-width: 768px) {
-      margin-left: 10px;
-    }
-  }
 `;
 
 export const Avatar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 1rem;
   & > svg {
     font-size: 1.5rem;
   }

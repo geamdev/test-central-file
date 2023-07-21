@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Header } from '../../components';
+import { useRegisterUser } from './hook';
 
-import supabase from '../../supabase/client';
 import {
   ButtonStyled,
   ContainerInput,
@@ -17,6 +17,8 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
+  const { registerUser } = useRegisterUser();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -30,23 +32,18 @@ const Register: React.FC = () => {
       return;
     }
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          names,
-        },
-      },
-    });
-
-    if (error) {
-      alert(error.message);
-      return;
+    try {
+      await registerUser({
+        name: names,
+        email,
+        password,
+        idProfile: '2DDFA5AC-A53B-4D07-A327-CC599B818A2C',
+      });
+      alert('User registered successfully!');
+    } catch (error) {
+      console.error(error);
+      alert('Error occurred while registering user');
     }
-
-    console.log(data);
-    alert('Check your email for the confirmation link');
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

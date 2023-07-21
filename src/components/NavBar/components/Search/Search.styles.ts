@@ -54,7 +54,6 @@ export const IconResponsive = styled.button`
 `;
 
 export const IconSearch = styled(FiSearch)`
-
   color: #000;
   @media (max-width: 480px) {
     color: #e9ecef;
