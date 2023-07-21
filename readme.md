@@ -6,7 +6,7 @@ En este repositorio, encontrarás una solución para la aplicación web de Gesti
 
 Clona este repositorio en tu máquina local.
 
-Asegúrate de tener Node.js, npm (Node Package Manager) y .NET 6 instalados en tu sistema.
+Asegúrate de tener Node.js, npm (Node Package Manager), .NET 6 instalados en tu sistema y sqlserver.
 
 Configuración del Front-End:
 
