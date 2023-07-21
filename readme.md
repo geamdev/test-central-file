@@ -26,6 +26,16 @@ Librerías Open Source: Todas las librerías utilizadas en el desarrollo de la a
 
 ## Consideraciones finales:
 
-Si se me asignara más tiempo, dedicaría esfuerzos para asegurar una mayor seguridad y realizar mejoras adicionales en el diseño y la experiencia de usuario. También realizaría una optimización de la aplicación para mejorar el rendimiento y la eficiencia del código.
+#### Consideraciones técnicas y arquitectónicas:
 
-Gracias por revisar esta solución técnica. Si tienes alguna pregunta o inquietud, no dudes en contactarme. ¡Espero que encuentres útil esta implementación!
+Elegí tecnologías que se ajustaran a los requisitos del proyecto, priorizando rendimiento y facilidad de mantenimiento. La arquitectura es modular y bien organizada, siguiendo las mejores prácticas para mantener un bajo acoplamiento.
+
+#### Mejoras para el envío actual:
+
+Agregar más detalles sobre las tecnologías utilizadas y proporcionar instrucciones claras para configurar y ejecutar la aplicación.
+
+#### Mejoras con más tiempo:
+
+Fortalecer la seguridad con autenticación y cifrado, optimizar el rendimiento, aumentar las pruebas, mejorar la experiencia del usuario y ofrecer una documentación completa.
+
+Gracias por revisar esta solución técnica. Si tienes preguntas, no dudes en contactarme. Espero que encuentres útil esta implementación.
