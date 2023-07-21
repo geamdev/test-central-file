@@ -8,19 +8,10 @@ Clona este repositorio en tu máquina local.
 
 Asegúrate de tener Node.js, npm (Node Package Manager) y .NET 6 instalados en tu sistema.
 
-Configuración del Back-End:
-
-Abre la carpeta del Back-End (ubicada en "/backend").
-Restaura los paquetes NuGet utilizando el comando: dotnet restore
-Configura la conexión a la base de datos SQL Server en el archivo "appsettings.json".
-Ejecuta las migraciones para crear la base de datos utilizando el comando: dotnet ef database update
-Inicia el servidor Back-End con el comando: dotnet run
 Configuración del Front-End:
-
-Abre la carpeta del Front-End (ubicada en "/frontend").
-Instala las dependencias con el comando: npm install
-Inicia la aplicación con el comando: npm start
-Ahora podrás acceder a la aplicación web desde tu navegador en la dirección: http://localhost:3000/
+1. Abre una terminal en la carpeta raíz del proyecto.
+2. Ejecuta el comando `pnpm install` para instalar las dependencias del proyecto.
+3. Ejecuta el comando `pnpm dev` para iniciar la aplicación en modo de desarrollo.
 
 ## Opciones técnicas y arquitectónicas utilizadas:
 React y Redux: Se eligió utilizar React y Redux debido a su popularidad y eficiencia en el manejo del estado de la aplicación y la reactividad en la interfaz de usuario.
