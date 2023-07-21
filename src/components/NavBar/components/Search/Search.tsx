@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { Card } from './components';
+import { useDataContact } from './hook';
 import {
   HeaderSearch,
   SearchStyle,
@@ -8,39 +10,29 @@ import {
   IconResponsive,
   TextIcon,
 } from './Search.styles';
-import { Card } from './components';
-
-const contacts = [
-  'maria',
-  'jose',
-  'pedro',
-  'marcos',
-  'julia',
-  'juliana',
-  'josefa',
-  'josefina',
-  'josefino',
-  'josefano',
-  'ana',
-];
 
 const Search = () => {
-  const [showCard, setShowCard] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { contacts } = useDataContact();
+  const [showCard, setShowCard] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleSearch = (event: any) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   const filteredContacts = contacts.filter((contact) => {
-    return contact.toLowerCase().includes(searchTerm.toLowerCase());
+    return contact.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
-  const filteredContactsSorted = [...filteredContacts].sort();
+
+  const filteredContactsSorted = [...filteredContacts].sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
 
   const handleInputClick = () => {
     setShowCard(true);
   };
+
   useEffect(() => {
     const handleClickOutsideModal = (event: MouseEvent) => {
       if (
@@ -95,7 +87,7 @@ const Search = () => {
           {filteredContactsSorted.length > 0 ? (
             filteredContactsSorted
               .slice(0, 10)
-              .map((result, index) => <div key={index}>{result}</div>)
+              .map((result) => <div key={result.id}>{result.name}</div>)
           ) : (
             <div>Sin resultados</div>
           )}

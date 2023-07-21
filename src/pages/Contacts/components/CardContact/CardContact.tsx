@@ -57,7 +57,7 @@ const CardContact: React.FC = () => {
         showModal={state.showModalEdit}
         onClose={() => setState({ ...state, showModalEdit: false })}
       >
-        <ContactForm />
+        <ContactForm isEditing={true} />
       </ContactModal>
     </CardContactContainer>
   );

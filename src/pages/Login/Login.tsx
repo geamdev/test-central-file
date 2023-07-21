@@ -18,7 +18,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { loginUser, isLoggedIn } = useLoginUser();
+  const { loginUser } = useLoginUser();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,8 +28,8 @@ const Login: React.FC = () => {
       return;
     }
     try {
-      await loginUser(email, password);
-      if (isLoggedIn) {
+      const data = await loginUser(email, password);
+      if (data) {
         localStorage.setItem('isLoggedIn', 'true');
         navigate('/');
       } else {

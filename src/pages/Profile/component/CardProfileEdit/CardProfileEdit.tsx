@@ -9,14 +9,8 @@ import {
   Label,
   Textarea,
 } from './CardProfileEdit.styles';
-
-interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  bio: string;
-}
+import { User } from '../../../../interfaces';
+import axios from 'axios';
 
 interface CardProfileEditProps {
   setLoading: (loading: boolean) => void;
@@ -42,14 +36,31 @@ const CardProfileEdit: React.FC<CardProfileEditProps> = ({ setLoading }) => {
     setLoading(true);
 
     try {
-      await supabase.auth.updateUser({
-        data: {
-          names: `${userData.firstName} ${userData.lastName}`,
-          phone: userData.phone,
-          bio: userData.bio,
-        },
-      });
+      // await updateUser({
+      //   name: `${userData.firstName} ${userData.lastName}`,
+      //   email: userData.email,
+      //   password: userData.password,
+      //   idProfile: userData.idProfile,
+      // });
+      const updateUserData = {
+          name: `${userData.firstName} ${userData.lastName}`,
+          email: userData.email,
+          password: userData.password,
+          idProfile: userData.idProfile,
+        }; 
 
+        const options = {
+          method: 'PUT',
+          url: 'https://localhost:7005/api/UserData/Update/E009B990-B313-4516-9669-E581FEDAD958',
+          headers: {'Content-Type': 'application/json'},
+          data: updateUserData
+        };
+
+        axios.request(options).then(function (response) {
+          console.log(response.data);
+        }).catch(function (error) {
+          console.error(error);
+        });
       console.log('User updated successfully');
     } catch (error) {
       console.error('Error updating user:', error);

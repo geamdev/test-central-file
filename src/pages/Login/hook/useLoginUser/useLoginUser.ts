@@ -22,9 +22,11 @@ const useUserLogin = () => {
       if (rawResponse?.status === 200) {
         setIsLoggedIn(true);
         setUserData(response);
+        return true;
       } else {
         setIsLoggedIn(false);
         setUserData(null);
+        return false;
       }
     } catch (error) {
       console.log(error);
@@ -42,9 +44,10 @@ const useUserLogin = () => {
           const names = userData?.name;
           const firstName = names?.split(' ')[0];
           const lastName = names?.split(' ')[1];
-          console.log(userData?.profileName)
           dispatch(
             setUser({
+              password: userData?.password,
+              idProfile: userData?.idProfile,
               profileName: userData?.profileName,
               id: userData?.id,
               firstName,
