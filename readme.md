@@ -13,6 +13,8 @@ Configuración del Front-End:
 1. Abre una terminal en la carpeta raíz del proyecto.
 2. Ejecuta el comando `pnpm install` para instalar las dependencias del proyecto.
 3. Ejecuta el comando `pnpm dev` para iniciar la aplicación en modo de desarrollo.
+4. Ya puedes ver el proyecto en el puerto 5173.
+5. Puedes registrar un nuevo usuario o iniciar como admin con estas credenciales, email: Geampiere@gmail.com | password: 12345
 
 ## Opciones técnicas y arquitectónicas utilizadas:
 
